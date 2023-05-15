@@ -1,4 +1,4 @@
-"use stirct";
+"use strict";
 
 $(function () {
   $(".header__nav__menu__sub").hide();
@@ -40,21 +40,16 @@ window.onload = function () {
   });
 
   // main visual scroll effect
-  const sectionMainVisual = document.querySelector(".main__visual");
-  const sectionList = document.querySelector("list");
-
-  let winScrollTop;
+  const sectionMainVisual = document.querySelector(".main");
+  const sectionList = document.querySelector(".list");
   let sectionIsmoving = false;
 
-  function setProperty() {
-    winScrollTop = window.pageYOffset;
+  function moveSection() {
+    const winScrollTop = window.pageYOffset;
     const sectionMainTop =
       sectionMainVisual.getBoundingClientRect().top + winScrollTop;
     const sectionMainBottom = sectionMainTop + sectionMainVisual.offsetHeight;
-  }
 
-  function moveSection() {
-    setProperty();
     if (winScrollTop > sectionMainTop && winScrollTop < sectionMainBottom) {
       if (!sectionIsmoving) {
         sectionIsmoving = true;
@@ -67,26 +62,54 @@ window.onload = function () {
     }
   }
   function activeCheck() {
-    header.classList.add("active");
     sectionMainVisual.classList.add("active");
-    sectionMainVisual.classList.add("active");
-    scrollMove(sectionMainBottom + 1);
+    sectionList.classList.add("active");
   }
 
   function moveStartRender() {
+    const winScrollTop = window.pageYOffset;
+    const sectionMainTop =
+      sectionMainVisual.getBoundingClientRect().top + winScrollTop;
+    const sectionMainBottom = sectionMainTop + sectionMainVisual.offsetHeight;
+
     if (!header.classList.contains("active")) {
-      header.addClass("active");
-      sectionMainVisual.addClass("acitve");
-      sectionList.addClass("active");
+      sectionMainVisual.classList.add("active");
+      sectionList.classList.add("active");
+      scrollMove(sectionMainBottom + 1);
     } else {
-      header.classList.classList.remove("active");
       sectionMainVisual.classList.remove("active");
       sectionList.classList.remove("active");
+      scrollMove(sectionMainTop);
     }
   }
 
-  function scrollMove() {
-    const loop = setInterval(function () {}, 10);
+  function scrollMove(moveY) {
+    const speed = 6;
+    let vy = 0;
+    let scrollY = 0;
+
+    const dir = moveY > window.pageYOffset ? 1 : -1;
+    vy += speed * dir;
+
+    if (dir > 0) {
+      scrollY = Math.min(moveY, window.pageYOffset + vy);
+    } else {
+      scrollY = Math.max(moveY, window.pageYOffset + vy);
+    }
+
+    const loop = setInterval(function () {
+      scrollY = window.pageYOffset + vy;
+
+      window.scrollTo(0, scrollY);
+
+      if (scrollY > moveY && dir > 0) {
+        sectionIsmoving = false;
+        clearInterval(loop);
+      } else if (scrollY < moveY && dir < 0) {
+        sectionIsmoving = false;
+        clearInterval(loop);
+      }
+    }, 10);
   }
 
   function init() {
@@ -95,6 +118,5 @@ window.onload = function () {
   window.addEventListener("scroll", function () {
     moveSection();
   });
-  s;
   init();
 };
