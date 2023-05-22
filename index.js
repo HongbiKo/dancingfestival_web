@@ -1,9 +1,24 @@
 "use strict";
 
 $(function () {
-  $(".header__nav__menu__sub").hide();
-  $(".mainmenu").click(function () {
-    $(this).next($(".header__nav__menu__sub")).slideToggle("fast");
+  let targetMainMenu = $(".mainmenu");
+
+  targetMainMenu.click(function () {
+    const targetSubMenu = $(this).next(".header__nav__menu__sub");
+
+    for (let i = 0; i < targetMainMenu.length; i++) {
+      if ($(this).text() == targetMainMenu[i].innerText) {
+        if (targetSubMenu.is(":visible")) {
+          targetSubMenu.slideUp();
+        } else {
+          targetSubMenu.slideDown();
+        }
+      } else {
+        $(targetMainMenu[i])
+          .next(".header__nav__menu__sub")
+          .css("display", "none");
+      }
+    }
   });
 });
 
@@ -84,11 +99,12 @@ window.onload = function () {
   }
 
   function scrollMove(moveY) {
-    const speed = 6;
+    const speed = 8;
     let vy = 0;
     let scrollY = 0;
 
     const dir = moveY > window.pageYOffset ? 1 : -1;
+    // 아래로 내려갈때는 1, 위로 올라갈때는 -1
     vy += speed * dir;
 
     if (dir > 0) {
@@ -99,10 +115,9 @@ window.onload = function () {
 
     const loop = setInterval(function () {
       scrollY = window.pageYOffset + vy;
-
       window.scrollTo(0, scrollY);
 
-      if (scrollY > moveY && dir > 0) {
+      if (scrollY >= moveY && dir > 0) {
         sectionIsmoving = false;
         clearInterval(loop);
       } else if (scrollY < moveY && dir < 0) {
@@ -116,6 +131,10 @@ window.onload = function () {
     moveSection();
   }
   window.addEventListener("scroll", function () {
+    moveSection();
+  });
+
+  window.addEventListener("resize", function () {
     moveSection();
   });
   init();
