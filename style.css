@@ -284,23 +284,71 @@ header.active {
   background: rgba(0,0,0,.8);
   border-radius: 20px;
 }
-.slider > li > img {
-  width: 82%;
-}
-.list__board__judge > p,
-.slider > li,
-.arrow {
+.list__board__judge > p {
   text-align: center;
 }
-.arrow {
-  margin-top: 5px;
+.list__board__judge__sliderbox 
+{
+  width: 200px;
+  height: 345px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
 }
-.arrow i {
+.slider {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: .5s ease-out;
+}
+.slider li:not(:last-child) {
+  float: left;
+  margin-right: 100px;
+}
+.slider_img1 {
+  background: url(./imgs/judge1.png) center center no-repeat;
+  background-size: cover;
+  width: 200px;
+  height: 300px;
+}
+.slider_img2 {
+  background: url(./imgs/judge2.png) center center no-repeat;
+  background-size: cover;
+  width: 200px;
+  height: 300px;
+}
+.slider_img3 {
+  background: url(./imgs/judge3.png) center center no-repeat;
+  background-size: cover;
+  width: 200px;
+  height: 300px;
+}
+.slider_img4 {
+  background: url(./imgs/judge4.png) center center no-repeat;
+  background-size: cover;
+  width: 200px;
+  height: 300px;
+}
+.slider_img5 {
+  background: url(./imgs/judge5.png) center center no-repeat;
+  background-size: cover;
+  width: 200px;
+  height: 300px;
+}
+.arrow span{
+  position: absolute;
+  bottom: 0;
+  cursor: pointer;
+}
+.arrow > span > i {
   color: var(--color-white);
   font-size: var(--font-medium);
 }
-.arrow > a:first-child {
-  margin-right: 15px;
+.arrow .prev {
+  left: 30%;
+}
+.arrow .next {
+  right: 30%;
 }
 
 
@@ -507,7 +555,7 @@ header.active {
   --font-large: 33px;
   --font-medium: 24px;
   --font-middle: 18px;
-  --font-regular: 14px;
+  --font-regular: 15px;
   --font-small: 12px;
   --font-micro: 10px;
   }
@@ -540,6 +588,9 @@ header.active {
     display: flex;
     background-color: rgba(255, 255, 255, .3);
     border-radius: 20px;
+  }
+  .header__nav__menu__item {
+    padding: 10px 10px 5px;
   }
   .nav__toggle-btn {
     display: block;
@@ -578,7 +629,8 @@ header.active {
     width: 100%;
   }
   .list__board__judge{
-    width: 70%
+    width: fit-content;
+    padding: 0 50px;
   }
 
   .list.active .list__board__txt .upper:first-child,
@@ -589,6 +641,6 @@ header.active {
     margin: 15px 0;
   }
   .slider > li > img {
-    width: 35%
+    width: 25%
   }
 }
