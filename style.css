@@ -233,6 +233,7 @@ header.active {
 .list__board {
   display: flex;
   justify-content: center;
+  align-items: center;
   margin-bottom: 150px;
 }
 .list__board__txt {
@@ -367,11 +368,11 @@ header.active {
 
 .gallery {
   overflow: hidden;
-  background-color: #000;
+  transition: background-color 0.2s ease-out;
 }
-/* .gallery.active {
-  background-color: #fff;
-} */
+.gallery.black {
+  background-color: #000;;
+}
 .gallery__title {
   text-align: center;
   padding: 140px 0 60px;
@@ -465,6 +466,7 @@ header.active {
   flex-direction: column;
   align-items: center;
   margin-bottom: 30px;
+  padding: 0 5px;
 }
 .simplemenu__list:hover span{
   transform: translateY(-100px) scale(1.2);

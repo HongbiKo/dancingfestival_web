@@ -59,9 +59,8 @@ window.onload = function () {
   const sectionMainVisual = document.querySelector(".main");
   const sectionList = document.querySelector(".list");
   let sectionIsmoving = false;
-
+  const winScrollTop = window.pageYOffset;
   function moveSection() {
-    const winScrollTop = window.pageYOffset;
     const sectionMainTop =
       sectionMainVisual.getBoundingClientRect().top + winScrollTop;
     const sectionMainBottom = sectionMainTop + sectionMainVisual.offsetHeight;
@@ -81,7 +80,6 @@ window.onload = function () {
     sectionMainVisual.classList.add("active");
     sectionList.classList.add("active");
   }
-
   function moveStartRender() {
     const winScrollTop = window.pageYOffset;
     const sectionMainTop =
@@ -98,7 +96,6 @@ window.onload = function () {
       scrollMove(sectionMainTop);
     }
   }
-
   function scrollMove(moveY) {
     const speed = 8;
     let vy = 0;
@@ -128,11 +125,57 @@ window.onload = function () {
     }, 10);
   }
 
+  // gallery effect
+  const parallaxBody = document.querySelector(".list");
+  const parallaxBodyBackground = document.querySelector(".gallery");
+  const parallaxList = document.querySelectorAll(".gallery__img");
+
+  function motionParallax() {
+    const parallaxOffsetTop =
+      parallaxBody.getBoundingClientRect().top + winScrollTop;
+    const parallaxThisTop = winScrollTop - parallaxOffsetTop;
+    const parallaxSpeed = 900;
+    const parallaxPercent = (parallaxThisTop / parallaxSpeed) * 100;
+    const parallaxStartValue = 250;
+    const parallaxMoveDistance = Math.max(
+      parallaxStartValue - parallaxStartValue,
+      Math.min(
+        parallaxStartValue,
+        parallaxStartValue - parallaxStartValue * (parallaxPercent / 100)
+      )
+    );
+
+    parallaxList[0].style.transform =
+      "translate(0px," + parallaxMoveDistance + "px)";
+    parallaxList[1].style.transform =
+      "translate(0px," + parallaxMoveDistance * 1.8 + "px)";
+    parallaxList[2].style.transform =
+      "translate(0px," + parallaxMoveDistance * 2.5 + "px)";
+    parallaxList[3].style.transform =
+      "translate(0px," + parallaxMoveDistance * 3.4 + "px)";
+    parallaxList[4].style.transform =
+      "translate(0px," + parallaxMoveDistance * 4.3 + "px)";
+    parallaxList[5].style.transform =
+      "translate(0px," + parallaxMoveDistance * 5.2 + "px)";
+    parallaxList[6].style.transform =
+      "translate(0px," + parallaxMoveDistance * 6.3 + "px)";
+    parallaxList[7].style.transform =
+      "translate(0px," + parallaxMoveDistance * 7.1 + "px)";
+
+    if (parallaxPercent > 25) {
+      parallaxBodyBackground.classList.add("black");
+    } else {
+      parallaxBodyBackground.classList.remove("black");
+    }
+  }
+
   function init() {
     moveSection();
+    motionParallax();
   }
   window.addEventListener("scroll", function () {
     moveSection();
+    motionParallax();
   });
 
   window.addEventListener("resize", function () {
