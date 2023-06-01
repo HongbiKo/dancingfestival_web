@@ -8,6 +8,7 @@
   /* Color */
   --color-white: #fff;
   --color-grey: #999;
+  --color-light-grey: #d5d5d5;
   --color-black: #000;
 
 
@@ -597,7 +598,31 @@ header.active {
   color: var(--color-white);
 }
 
-
+/* arrow-up */
+.arrow-up {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  font-size: 30px;
+  width: 50px;
+  height: 50px;
+  background-color: var(--color-white);
+  color: var(--color-black);
+  border-radius: 50%;
+  transition: all var(--animation-duration) ease;
+  opacity: 0;
+  pointer-events: none;
+}
+.arrow-up:hover {
+  background-color: var(--color-light-grey);
+}
+.arrow-up.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
 
 /* Responsive */
 
@@ -761,5 +786,14 @@ header.active {
   }
   .footer__right__text3 {
     text-align: center;
+  }
+
+  /* arrow-up */
+  .arrow-up {
+    font-size: 20px;
+    width: 30px;
+    height: 30px;
+    bottom: 30px;
+    right: 20px;
   }
 }

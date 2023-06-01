@@ -261,4 +261,21 @@ window.onload = function () {
       item.classList.remove("active");
     });
   });
+
+  //Show arrow-up when scrolling down
+  const listHeight = sectionList.getBoundingClientRect().height;
+  const arrowUp = document.querySelector(".arrow-up");
+  document.addEventListener("scroll", () => {
+    if (window.scrollY > listHeight / 2) {
+      arrowUp.classList.add("visible");
+    } else {
+      arrowUp.classList.remove("visible");
+    }
+  });
+
+  // Handle click on the 'arrow up' button
+  arrowUp.addEventListener("click", function () {
+    this.classList.add("active");
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  });
 };
