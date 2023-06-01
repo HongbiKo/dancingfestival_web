@@ -239,4 +239,26 @@ window.onload = function () {
     }
     currentIdx -= 1;
   });
+
+  // simplemenu effect
+  const simpleMenuList = document.querySelectorAll(".simplemenu__list");
+  simpleMenuList.forEach(function (item) {
+    item.addEventListener("mouseover", function () {
+      item.classList.add("active");
+    });
+    item.addEventListener("mouseout", function () {
+      item.classList.remove("active");
+    });
+  });
+
+  // galleryimg efect
+  const galleryImg = document.querySelectorAll(".gallery__img");
+  galleryImg.forEach(function (item) {
+    item.addEventListener("mouseover", function () {
+      item.classList.add("active");
+    });
+    item.addEventListener("mouseout", function () {
+      item.classList.remove("active");
+    });
+  });
 };

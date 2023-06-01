@@ -398,52 +398,66 @@ header.active {
 .gallery__banner__box:last-child {
   margin-bottom: 120px;
 }
-.gallery__img.img1 {
+.gallery__img.active .gallery__img__img1,
+.gallery__img.active .gallery__img__img3,
+.gallery__img.active .gallery__img__img4,
+.gallery__img.active .gallery__img__img6{
+  transform: scale(1.1) rotate(-0.01deg);
+}
+.gallery__img {
+  width: fit-content;
+  overflow: hidden;
+}
+.gallery__img__img1 {
   background: url(./imgs/img1.png) center 0 no-repeat;
   background-size: cover;
   width: 230px;
   height: 180px;
+  transition: transform 200ms ease-in-out;
 }
-.gallery__img.img2 {
+.gallery__img__img2 {
   background: url(./imgs/img2.png) center 0 no-repeat;
   background-size: cover;
   width: 400px;
   height: 250px;
   margin: 0 15px;
 }
-.gallery__img.img3 {
+.gallery__img__img3 {
   background: url(./imgs/img3.png) 20% 0 no-repeat;
   background-size: cover;
   width: 180px;
   height: 200px;
+  transition: transform 200ms ease-in-out;
 }
-.gallery__img.img4 {
+.gallery__img__img4 {
   background: url(./imgs/img4.png) center 20% no-repeat;
   background-size: cover;
   width: 320px;
   height: 220px;
+  transition: transform 200ms ease-in-out;
 }
-.gallery__img.img5 {
+.gallery__img__img5 {
   background: url(./imgs/img5.png) center 20% no-repeat;
   background-size: cover;
   width: 250px;
   height: 180px;
   margin: 0 15px;
 }
-.gallery__img.img6 {
+.gallery__img__img6 {
   background: url(./imgs/img6.png) 40% 20% no-repeat;
   background-size: cover;
   width: 160px;
   height: 170px;
+  transition: transform 200ms ease-in-out;
 }
-.gallery__img.img7 {
+.gallery__img__img7 {
   background: url(./imgs/img8.png) center center no-repeat;
   background-size: cover;
   width: 400px;
   height: 250px;
   margin: 0 15px;
 }
-.gallery__img.img8 {
+.gallery__img__img8 {
   background: url(./imgs/bdf_poster.png) center 0 no-repeat;
   background-size: cover;
   width: 340px;
@@ -466,7 +480,18 @@ header.active {
   flex-direction: column;
   align-items: center;
   margin-bottom: 30px;
-  padding: 0 5px;
+}
+.simplemenu__list.active .simplemenu__img.img1 {
+  transform: translateY(20px) skew(10deg);
+}
+.simplemenu__list.active .simplemenu__img.img2 {
+  transform: translateY(20px) rotate(-10deg);
+}
+.simplemenu__list.active .simplemenu__img.img3 {
+  transform: translateY(20px) rotate(10deg);
+}
+.simplemenu__list.active .simplemenu__img.img4 {
+  transform: translateY(20px) skew(10deg);
 }
 .simplemenu__list:hover span{
   transform: translateY(-100px) scale(1.2);
@@ -501,26 +526,26 @@ header.active {
   background-size: cover;
   transition: transform 300ms ease-in-out;
 }
-.simplemenu__list:hover .simplemenu__img.img1 {
-  transform: rotateX(10deg);
-}
 .simplemenu__img.img2{
   width: 100px;
   height: 190px;
   background: url(./imgs/footer__img2.png) 20% 50% no-repeat;
   background-size: cover;
+  transition: transform 300ms ease-in-out;
 }
 .simplemenu__img.img3{
   width: 100px;
   height: 190px;
   background: url(./imgs/footer__img3.png) 50% 50% no-repeat;
   background-size: cover;
+  transition: transform 300ms ease-in-out;
 }
 .simplemenu__img.img4{
   width: 100px;
   height: 190px;
   background: url(./imgs/footer__img4.png) 50% 50% no-repeat;
   background-size: cover;
+  transition: transform 300ms ease-in-out;
 }
 
 
@@ -690,7 +715,7 @@ header.active {
   }
   .gallery__img {
     margin-bottom: 15px;
-    width: 100%;
+    /* width: 100%; */
   }
   .gallery__img.img2,
   .gallery__img.img5,
@@ -715,8 +740,8 @@ header.active {
   }
 
 
-
   /* footer */
+
   .footer__text {
     flex-direction: column;
     align-items: center;
